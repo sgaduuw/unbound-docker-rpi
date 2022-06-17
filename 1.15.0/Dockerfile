@@ -50,7 +50,7 @@ WORKDIR /tmp/src
 
 COPY --from=openssl /opt/openssl /opt/openssl
 
-RUN build_deps="curl gcc libc-dev libevent-dev libexpat1-dev libnghttp2-dev make" && \
+RUN build_deps="curl gcc libc-dev libevent-dev libexpat1-dev libnghttp2-dev make libhiredis-dev" && \
     set -x && \
     DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-install-recommends \
       $build_deps \
@@ -76,6 +76,8 @@ RUN build_deps="curl gcc libc-dev libevent-dev libexpat1-dev libnghttp2-dev make
         --with-libnghttp2 \
         --enable-tfo-server \
         --enable-tfo-client \
+        --enable-cachedb \
+        --with-libhiredis \
         --enable-event-api && \
     make install && \
     mv /opt/unbound/etc/unbound/unbound.conf /opt/unbound/etc/unbound/unbound.conf.example && \
@@ -100,6 +102,7 @@ RUN set -x && \
       ldnsutils \
       libevent-2.1-7 \
       libnghttp2-14 \
+      libhiredis0.14 \
       libexpat1 && \
     groupadd _unbound && \
     useradd -g _unbound -s /etc -d /dev/null _unbound && \
