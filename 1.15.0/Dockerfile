@@ -123,12 +123,12 @@ WORKDIR /opt/unbound/
 ENV PATH /opt/unbound/sbin:"$PATH"
 
 LABEL org.opencontainers.image.version=${UNBOUND_VERSION} \
-      org.opencontainers.image.title="mvance/unbound-rpi" \
-      org.opencontainers.image.description="a validating, recursive, and caching DNS resolver" \
-      org.opencontainers.image.url="https://github.com/MatthewVance/unbound-docker-rpi" \
-      org.opencontainers.image.vendor="Matthew Vance" \
+      org.opencontainers.image.title="sgaduuw/unbound-rpi" \
+      org.opencontainers.image.description="a validating, recursive, and caching DNS resolver, with cachedb+redis support" \
+      org.opencontainers.image.url="https://hub.docker.com/r/sgaduuw/unbound-rpi" \
+      org.opencontainers.image.vendor="Eelco Wesemann" \
       org.opencontainers.image.licenses="MIT" \
-      org.opencontainers.image.source="https://github.com/MatthewVance/unbound-docker-rpi"
+      org.opencontainers.image.source="https://github.com/sgaduuw/unbound-docker-rpi"
 
 EXPOSE 53/tcp
 EXPOSE 53/udp
